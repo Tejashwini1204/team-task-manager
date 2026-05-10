@@ -6,7 +6,11 @@ load_dotenv()
 
 MONGO_URL = os.getenv("MONGO_URL")
 
-client = AsyncIOMotorClient(MONGO_URL)
+client = AsyncIOMotorClient(
+    MONGO_URL,
+    tls=True,
+    tlsAllowInvalidCertificates=True
+)
 
 database = client.team_task_manager
 
